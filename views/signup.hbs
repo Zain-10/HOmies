@@ -1,0 +1,42 @@
+<section>
+<div class="container mt-3 login">
+        <div class="card" style="width: 28rem;">            
+            <div class="card-header login-header">SignUp into HOmiES</div>    
+            <div class="card-body">
+                <form action="/signup" method="POST" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="name-reg" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name-reg" name="Name" placeholder="Your Name" required>                        
+                    </div>
+                    <div class="mb-3">
+                        <label for="email-reg" class="form-label">Email</label>
+                        <input type="text" class="form-control" id="email-reg" name="Email" placeholder="Your Email" required>                        
+                    </div>
+                    <div class="mb-3">
+                        <label for="password-reg" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password-reg" name="Password" placeholder="Create a Password" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="bio-reg" class="form-label">Bio</label>
+                        <textarea class="form-control" id="bio-reg" name="Bio" rows="4" cols="50" placeholder="About You...."></textarea>
+                    </div>
+                    
+                    <div class="image-signup">
+                        <label>Image</label>
+                        <img src="/profile-images/{{this._id}}.jpg" alt="" style="width: 100px;height:auto" id="imgView" required>
+                        <input type="file" name="Image" class="form-control" onchange={viewImage(event)}>
+                    </div>
+                    <div class="login-footer">
+                        <div><button type="submit" class="btn btn-primary mt-2">Submit</button></div>
+                    </div>
+                </form>  
+            </div>
+        </div>
+    </div>
+    </section>
+
+<script>
+    function viewImage(event){
+        document.getElementById('imgView').src=URL.createObjectURL(event.target.files[0])
+    }
+</script>

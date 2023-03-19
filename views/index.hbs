@@ -1,0 +1,135 @@
+<section>
+<div class="divider">
+ <div class="main-container">
+  <div class="profile-container">
+    <div class="img-container" style="width: 10.5rem;height: 12.5rem">
+      <img
+        class="pro-img"
+        src="profile-images/{{user._id}}.jpg"
+        alt="Card image cap"
+        style="width: 10rem;height: 12rem"
+      />
+    </div>
+    <div class="mt-4">
+      <h4 class="">{{user.Name}}</h5>
+    </div>
+    <div class="mt-2">
+      <h5><span id="friend-count">{{friendCount}}</span> Friends</h5>
+    </div>
+    <a href="friends" class="btn btn-primary mt-2">Your Friends</a>
+    <div class="mt-2">
+      {{user.Bio}}
+    </div>
+  </div>
+
+  <div class="mt-4 pl-4">
+    <h4>Pick your friends</h4>
+  </div>
+
+  
+  <div class="add-friends" >
+    {{#each profiles}}
+    <div class="card mt-3 ml-4 " style="width: 15%;">
+      <a href="/{{this._id}}">
+      <img class="card-img-top" src="profile-images/{{this._id}}.jpg" alt="Card image cap" style="height:11rem">
+      </a>
+      <div class="card-body">
+        <a href="/{{this._id}}"><h5 class="card-text text-dark">{{this.Name}}</h5></a>
+        mutual friends
+        
+        <button class="btn btn-primary" onclick="addFriend(this,'{{this._id}}')">Add Friend</button>
+      </div>
+      
+    </div>
+    {{/each}}
+  </div>
+
+ </div>
+
+  <div class="friends-list">
+    <div class="line"></div>
+    <div>
+    <div class="mt-3 ml-2 d-flex">
+  
+          <input
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Enter the Name"
+            aria-label="Search"
+            id="search-input"
+          />
+          <button
+            class="btn btn-outline-primary my-2 my-sm-0"
+            onclick="getProfile()"
+          >Search</button>
+      
+    </div>
+    <div class="search-users">
+      {{#each profiles}}
+      <div class="search-card">
+        <img src="profile-images/{{this._id}}.jpg" alt="img" style="width:5rem">
+        <h5 class="m-3" id="search-results">{{this.Name}}</h5>
+      </div>
+      {{/each}}
+    </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<script>
+
+  function addFriend(button,proId){
+
+    button.disabled = true;
+    button.textContent = 'Friend Added';
+
+    $.ajax({
+      url:'/add-friends/'+proId,
+      method:'get',
+      success:(response)=>{
+         if(response.status){
+          let count=$("#friend-count").html()
+          count=parseInt(count)+1
+          $('#friend-count').html(count)
+        }
+      }
+    })
+  }
+
+  function getProfile(){
+    var user = document.getElementById("search-input").value;
+    $.ajax({
+      url:'/search-user/'+user
+      method:'get'
+    })
+  }
+
+  function search(query) {
+  return profiles.filter(item =>
+    item.Name.toLowerCase().includes(query.toLowerCase())
+  );
+}
+
+const searchInput = document.getElementById('search-input');
+const searchResults = document.getElementById('search-results');
+
+searchInput.addEventListener('input', event => {
+  const query = event.target.value;
+  const results = search(query);
+
+  // Clear previous search results
+  searchResults.innerHTML = '';
+
+  // Add new search results to the DOM
+  results.forEach(result => {
+    const li = document.createElement('li');
+    li.textContent = result.name;
+    searchResults.appendChild(li);
+  });
+});
+
+ 
+
+</script>

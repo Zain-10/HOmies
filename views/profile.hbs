@@ -1,0 +1,41 @@
+<section>
+  <div class="profile-container">
+    <div class="img-container" style="width: 10.5rem;height: 12.5rem">
+      <img
+        class="pro-img"
+        src="profile-images/{{profile._id}}.jpg"
+        alt="Card image cap"
+        style="width: 10rem;height: 12rem"
+      />
+    </div>
+    <div class="mt-4">
+      <h4 class="">{{profile.Name}}</h5>
+    </div>
+    <div class="mt-2">
+      <h5><span id="friend-count">{{friendCount}}</span> Friends</h5>
+    </div>
+    <div class="mt-2">
+      {{profile.Bio}}
+    </div>
+  </div>
+
+  <div class="mt-4 pl-4">
+    <h4>Friends</h4>
+  </div>
+
+  <div class="add-friends" >
+    {{#each friends}}
+    <div class="card mt-3 ml-4 " style="width: 15%;">
+      <a href="/{{this._id}}">
+      <img class="card-img-top" src="profile-images/{{this._id}}.jpg" alt="Card image cap" style="height:11rem">
+      </a>
+      <div class="card-body">
+        <a href="/{{this._id}}"><h5 class="card-text text-dark">{{this.Name}}</h5></a>
+        mutual friends
+        <button class="btn btn-primary" onclick="addFriend('{{this._id}}')">Add Friend</button> 
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</section>
+  

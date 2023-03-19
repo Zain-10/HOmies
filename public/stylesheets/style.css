@@ -1,0 +1,95 @@
+.logo{
+    width: 100px;
+    height: 50px;
+}
+.nav{
+    background-color: black;
+}
+
+.login{
+    display: flex;
+    justify-content: center;
+    width: 30%;
+}
+.login-header{
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+}
+.login-footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-signup{
+    display: flex;
+    flex-direction: column;
+}
+
+.main-container{
+    width: 80%;
+}
+.img-container{
+    background-color: rgb(77, 97, 227);
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+}
+.profile-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;   
+}
+.pro-img{
+    border-radius: 20px;
+}
+.add-friends{
+    text-decoration: none;
+    display: flex;
+}
+.a{
+    text-decoration: none;
+}
+
+.divider{
+    display: flex;
+}
+.line{
+    border-left: 3px solid rgb(0, 0, 0);
+    height: 800px;
+}
+.friends-list{
+    width: 20%;
+    display: flex;
+}
+.search-users{
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.search-card{
+    display: flex;
+    width: 95%;
+    border-radius: 5px;
+    height: 100px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 10px;
+}
+
+.your-friends{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.friend-card{
+    display: flex;
+    width: 30%;
+    border-radius: 5px;
+    height: 100px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 20px;
+}

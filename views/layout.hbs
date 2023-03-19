@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    
+  </head>
+  <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <nav class="navbar justify-content-between nav">
+      <a class="navbar-brand text-white " href="/">
+        {{!-- <img src="/images/homies-logo.png" class="logo"> --}}HOmiES
+      </a>
+      <div class="d-flex">
+        {{#if user}}
+          <img
+            class="pro-img"
+            src="profile-images/{{user._id}}.jpg"
+            alt="Card image cap"
+            style="width: 3rem;height: 2rem"
+          /> 
+          <div class="text-white ml-2">{{user.Name}}</div>
+          <a href="/logout" class="text-danger ml-2">Log out</a>
+        {{/if}}
+          
+      </div>
+    </nav>
+    {{{body}}}
+
+  </body>
+</html>

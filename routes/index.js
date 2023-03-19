@@ -74,6 +74,7 @@ router.get('/add-friends/:id',async (req,res)=>{
 
 router.get('/friends',async(req,res)=>{
   let friends = req.session.user.friends
+  console.log(friends)
   let friendCount=null;
   friendCount= await userHelpers.getFriendCount(req.session.user._id)
   res.render('friends',{friends,friendCount})

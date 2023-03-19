@@ -98,38 +98,6 @@
     })
   }
 
-  function getProfile(){
-    var user = document.getElementById("search-input").value;
-    $.ajax({
-      url:'/search-user/'+user
-      method:'get'
-    })
-  }
-
-  function search(query) {
-  return profiles.filter(item =>
-    item.Name.toLowerCase().includes(query.toLowerCase())
-  );
-}
-
-const searchInput = document.getElementById('search-input');
-const searchResults = document.getElementById('search-results');
-
-searchInput.addEventListener('input', event => {
-  const query = event.target.value;
-  const results = search(query);
-
-  // Clear previous search results
-  searchResults.innerHTML = '';
-
-  // Add new search results to the DOM
-  results.forEach(result => {
-    const li = document.createElement('li');
-    li.textContent = result.name;
-    searchResults.appendChild(li);
-  });
-});
-
  
 
 </script>

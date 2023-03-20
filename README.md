@@ -28,3 +28,7 @@ To add a friend, click the "Add Friend" button on the Pick Your Friend section. 
   3. MongoDB
   4. Bootstrap
   5. EJS (Embedded JavaScript)
+  
+## Limitations
+- Didn't used any frontend framework like react or nextjs which made difficult for some features like perfect searching users.(as I was learning backend as express)
+- Time limitations - didn't worked more on UI and responsiveness, can't add other features

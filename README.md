@@ -1,5 +1,5 @@
 # HOmies
-This is a web application for a social media network where users can create profiles, log in, and add friends with other users. The purpose of this application is to provide a platform for users to connect with each other.
+This is a web application for a social media network where users can create profiles, log in, add friends with other users and see the number of mutual friends. The purpose of this application is to provide a platform for users to connect with each other.
 
 ## Installation
 To install this application, follow these steps:
@@ -21,6 +21,8 @@ To create a profile, click the "Create Account" button on the login page. Fill o
 To log in,enter your email address and password and click "Submit". Once you have logged in, you will be redirected to your profile page.
 
 To add a friend, click the "Add Friend" button on the Pick Your Friend section. The profile will be added to your friend list
+
+To see the number of mutual friends click one profile card.
 
 ## Technologies Used
   1. Node.js

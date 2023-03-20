@@ -73,8 +73,7 @@ router.get('/add-friends/:id',async (req,res)=>{
 })
 
 router.get('/friends',async(req,res)=>{
-  let friends = req.session.user.friends
-  console.log(friends)
+  let friends = await userHelpers.getFriends(req.session.user._id)
   let friendCount=null;
   friendCount= await userHelpers.getFriendCount(req.session.user._id)
   res.render('friends',{friends,friendCount})
@@ -89,9 +88,9 @@ router.get('/:id',async (req,res)=>{
   let friendCount=null;
   friendCount= await userHelpers.getFriendCount(req.params.id)
   let friends = await userHelpers.getFriends(req.params.id)
-  // let mutualCount = await userHelpers.mutualFriend(req.session.user._id,req.params.id)
+  let mutualCount = await userHelpers.mutualFriend(req.session.user._id,req.params.id)
   userHelpers.getProfile(req.params.id).then((profile)=>{
-    res.render('profile',{profile,friends,friendCount})
+    res.render('profile',{profile,friends,friendCount,mutualCount})
   })
 })
 

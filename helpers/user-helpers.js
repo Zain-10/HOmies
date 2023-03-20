@@ -72,11 +72,8 @@ module.exports={
         return new Promise(async (resolve,reject)=>{
             let count=0
             let user = await db.get().collection('profiles').findOne({_id: new ObjectId(userId)})
-            console.log(user)
             if(user.friends){
                 count=user.friends.length
-            }else{
-                count=0
             }
             resolve(count)
         })    
@@ -93,7 +90,6 @@ module.exports={
     getFriends:(proId)=>{
         return new Promise(async(resolve, reject) => { 
             let profile=await db.get().collection('profiles').findOne({_id: new ObjectId(proId)})
-            console.log(profile)
             let friends = profile.friends
             resolve(friends)
         })
@@ -118,23 +114,32 @@ module.exports={
     //         resolve(user)
     //     })
     // }
-    // mutualFriend:(userId,proId)=>{
-    //     return new Promise(async (resolve, reject) => { 
-    //         let profile=await db.get().collection('profiles').findOne({_id: new objectId(proId)})
-    //         let user = await db.get().collection('profiles').findOne({_id: new objectId(userId)})
-    //         let profileFriends = profile.friends
-    //         let userFriends = user.friends
-    //         const newArray = userFriends.map(item1 => {
-    //             const item2 = profileFriends.find(item2 => item2._id.equals(item1._id));
-    //             if (item2) {
-    //               return { ...item1, ...item2 };
-    //             }
-    //             return item1;
-    //           });
+    mutualFriend:(userId,proId)=>{
+        return new Promise(async (resolve, reject) => { 
+            let profile=await db.get().collection('profiles').findOne({_id: new ObjectId(proId)})
+            let user = await db.get().collection('profiles').findOne({_id: new ObjectId(userId)})
+            let profileFriends = profile.friends
+            let userFriends = user.friends
+            const mutuals = userFriends.map(item1 => {
+                const item2 = profileFriends.find(item2 => item2._id.equals(item1._id));
+                console.log(item2)
+                // if (item2) {
+                //       return { ...item2 };
+                //     }
+                return item2;
+              });
               
-    //         console.log(newArray);
+            console.log(mutuals);
+            let mutualCount=0
+            
+            for (let value of mutuals) if (value !== null && value !== undefined) mutualCount++;
 
-
-    //     })
-    // }
+            console.log(mutualCount);
+            // if(mutuals.length){
+            //     mutualCount=mutuals.length
+            // }
+            // console.log(mutualCount)
+            resolve(mutualCount)
+        })
+    }
 }

@@ -18,9 +18,9 @@ This application allows users to create profiles, log in, and add friends with o
 
 To create a profile, click the "Create Account" button on the login page. Fill out the form and click "Submit". Once you have created a profile, you need to log in and redirected to your profile page.
 
-To log in,enter your email address and password and click "Submit". Once you have logged in, you will be redirected to your profile page.
+To log in,enter your email address and password and click "Submit". Once you have logged in, you will be redirected to your profile page and the session will be stored in cookies for some minutes.
 
-To add a friend, click the "Add Friend" button on the Pick Your Friend section. The profile will be added to your friend list
+To add a friend, click the "Add Friend" button on the Pick Your Friend section. The profile will be added to your friend list.
 
 To see the number of mutual friends click one profile card.
 
@@ -34,3 +34,6 @@ To see the number of mutual friends click one profile card.
 ## Limitations
 - Didn't used any frontend framework like react or nextjs which made difficult for some features like perfect searching users.(as I was learning backend as express)
 - Time limitations - didn't worked more on UI and responsiveness, can't add other features
+
+## Demo Video
+Link : https://drive.google.com/file/d/11JxaapheoZovH9tVjxdknI9FOJWBAPUF/view?usp=share_link

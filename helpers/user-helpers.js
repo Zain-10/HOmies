@@ -1,6 +1,6 @@
 var db = require('../config/connection')
 const bcrypt = require('bcrypt')
-var objectId=require('mongodb').ObjectId
+var ObjectId=require('mongodb').ObjectId
 
 module.exports={
     doSignUp:(userData)=>{
@@ -44,11 +44,11 @@ module.exports={
 
     addFriend:(id,friendId)=>{
         return new Promise(async (resolve, reject) => { 
-            let user = await db.get().collection('profiles').findOne({_id:new objectId(id)})
-            let friendDetails = await db.get().collection('profiles').findOne({_id:new objectId(friendId)})
+            let user = await db.get().collection('profiles').findOne({_id:new ObjectId(id)})
+            let friendDetails = await db.get().collection('profiles').findOne({_id:new ObjectId(friendId)})
             let friend = user.friends
             if(friend){
-                db.get().collection('profiles').updateOne({_id:new objectId(id)},
+                db.get().collection('profiles').updateOne({_id:new ObjectId(id)},
                     {
                         $push:{friends:friendDetails}   
                     }).then((response)=>{
@@ -56,7 +56,7 @@ module.exports={
                         resolve()
                 })
             }else{
-              await db.get().collection('profiles').updateOne({_id:new objectId(id)},{
+              await db.get().collection('profiles').updateOne({_id:new ObjectId(id)},{
                 $set:{
                     friends:[friendDetails]
                 }
@@ -71,9 +71,12 @@ module.exports={
     getFriendCount:(userId)=>{
         return new Promise(async (resolve,reject)=>{
             let count=0
-            let user = await db.get().collection('profiles').findOne({_id: new objectId(userId)})
+            let user = await db.get().collection('profiles').findOne({_id: new ObjectId(userId)})
+            console.log(user)
             if(user.friends){
                 count=user.friends.length
+            }else{
+                count=0
             }
             resolve(count)
         })    
@@ -81,7 +84,7 @@ module.exports={
 
     getProfile:(proId)=>{
         return new Promise(async (resolve, reject) => { 
-            let profile=await db.get().collection('profiles').findOne({_id: new objectId(proId)})
+            let profile=await db.get().collection('profiles').findOne({_id: new ObjectId(proId)})
             let friends = profile.friends
             resolve(profile,friends)
         })
@@ -89,7 +92,8 @@ module.exports={
 
     getFriends:(proId)=>{
         return new Promise(async(resolve, reject) => { 
-            let profile=await db.get().collection('profiles').findOne({_id: new objectId(proId)})
+            let profile=await db.get().collection('profiles').findOne({_id: new ObjectId(proId)})
+            console.log(profile)
             let friends = profile.friends
             resolve(friends)
         })

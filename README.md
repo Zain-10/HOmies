@@ -22,8 +22,8 @@ To log in,enter your email address and password and click "Submit". Once you hav
 To add a friend, click the "Add Friend" button on the Pick Your Friend section. The profile will be added to your friend list
 
 Technologies Used
-Node.js
-Express.js
-MongoDB
-Bootstrap
-EJS (Embedded JavaScript)
+  1.Node.js
+  2.Express.js
+  3.MongoDB
+  4.Bootstrap
+  5.EJS (Embedded JavaScript)
